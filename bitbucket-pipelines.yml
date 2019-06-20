@@ -1,0 +1,14 @@
+image: maven:3.3.9
+
+pipelines:
+  default:
+    - step:
+        name: Run meterian scanner
+        deployment: test
+        caches:
+          - maven
+        script: # Modify the commands below to build your repository.
+          - mkdir  /.meterian
+          - curl  -o /.meterian/meterian-cli.jar  -O -J -L https://www.meterian.com/latest-client-canary
+          - echo  "~~~~~~~~~ METERIAN_API_TOKEN environment variable must be defined with a valid token from your account on http://meterian.io ~~~~~~~~~"
+          - java  -jar /.meterian/meterian-cli.jar
