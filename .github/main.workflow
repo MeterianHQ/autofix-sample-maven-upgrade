@@ -4,11 +4,7 @@ workflow "Call meterian scanner workflow" {
 }
 
 action "Call meterian scanner" {
-	uses = "./../meterian-scanner-action/action-scan"
-	#uses = "neomatrix369/meterian-scanner-action@master"
-	env = { 
-		METERIAN_CLIENT_JAR = ".meterian"
-	}
+	uses = "MeterianHQ/meterian-github-action@master"
 	secrets = [ "METERIAN_API_TOKEN" ]
-	args = "{}" ## placeholder for METERIAN_ARGS
+	args = "{}" ## placeholder for METERIAN_CLI_ARGS
 }
