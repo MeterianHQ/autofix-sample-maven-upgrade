@@ -1,0 +1,17 @@
+---
+
+name: workflow test
+
+# trigger on push
+on: push
+
+jobs:
+  meterian_scan:
+    name: Meterian client scan
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Scan project using meterian cli git hub action
+	uses: MeterianHQ/meterian-github-action@master
+        secrets: ["METERIAN_API_TOKEN"]
+
+...
